@@ -16,20 +16,35 @@ fun main(args: Array<String>) {
 	var num_a_string: String = ""
 	var num_b_string: String = ""
 
-	for (i in 0..40000000-1) {
-		number_a = (number_a * mul_a).rem(divisor)
+	for (i in 0..5000000-1) {
+
+		while (true) {
+			number_a = (number_a * mul_a).rem(divisor)
+			if ((number_a % 4) < 1) {
+				break
+			}
+		}
+
+		while (true) {
 		number_b = (number_b * mul_b).rem(divisor)
+			if ((number_b % 8) < 1) {
+				break
+			}				
+		}	
+
+//		print("$number_a ${number_a % 4}  ")
+//		println(number_b)
 
 		num_a_string = number_a.toString(2).takeLast(16)
 		num_b_string = number_b.toString(2).takeLast(16)
-		
+
 		if (num_a_string == num_b_string) {
-			checksum1++
+			checksum2++
 		}
 
-//		if (i % 10000 == 0) {
-//		println(i)
-//		}
+		if (i % 10000 == 0) {
+		println(i)
+		}
 
 	}
 
